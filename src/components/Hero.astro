@@ -3,7 +3,7 @@ import {Image} from 'astro:assets';
 import type {ImageMetadata} from 'astro';
 import Icon from './Icon.astro';
 import type {Line} from '../data/site';
-import {business} from '../data/site';
+import {business, trust} from '../data/site';
 
 interface Props {
   lines: Line[];
@@ -69,6 +69,17 @@ const full = size === 'full';
               <Icon name="phone" class="size-4" /> {business.phone}
             </a>
           </div>
+        )
+      }
+      {
+        full && (
+          <ul class="caps mt-6 flex flex-wrap gap-x-6 gap-y-2 text-white/90 ml-[clamp(0px,19vw,330px)] max-md:ml-0">
+            {trust.map((t) => (
+              <li class="flex items-center gap-2">
+                <Icon name="check" class="size-4 text-red-bright" /> {t}
+              </li>
+            ))}
+          </ul>
         )
       }
     </div>

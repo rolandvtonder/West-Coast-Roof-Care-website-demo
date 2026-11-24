@@ -200,7 +200,7 @@ export type Line = {t: string; i?: boolean};
 export const home = {
   title: 'Roofing & Waterproofing West Coast | West Coast Roof Care',
   description:
-    'Roof waterproofing, coating, replacement, cleaning, painting and registered asbestos work in Vredenburg, Saldanha, Langebaan and the West Coast. Free inspections.',
+    'Roof repairs, waterproofing, coating, re-roofing, painting and registered asbestos work in Vredenburg, Saldanha, Langebaan and the West Coast. Free inspections.',
   lines: [{t: 'Built to'}, {t: 'protect.', i: true}, {t: 'Built for the'}, {t: 'West Coast.', i: true}] as Line[],
   body: 'Salt air, wind and winter storms are hard on a roof. We waterproof, coat and replace roofs across the West Coast so your property stays dry, year after year.',
 };
@@ -270,8 +270,15 @@ export const services: Service[] = [
           'A correctly installed torch-on system typically lasts 10 years or more. Coastal roofs should be inspected every year, because salt and UV break down unprotected surfaces faster. Catching a lifted seam early is far cheaper than repairing water damage.',
         ],
       },
+      {
+        h: 'Backed by a 10-year waterproof warranty',
+        p: [
+          'Our waterproofing comes with a 10-year waterproof warranty, so you can be sure the job is done properly. The exact terms depend on the system and the condition of the roof, and are set out clearly in your quotation.',
+          'We are also a Bostik approved applicator, approved to apply Bostik waterproofing and sealing systems.',
+        ],
+      },
     ],
-    benefits: ['Seamless, fully bonded systems', 'Residential, commercial & industrial', 'Free site inspection & quote', 'Quality, proven products'],
+    benefits: ['10-year waterproof warranty', 'Bostik approved applicator', 'Seamless, fully bonded systems', 'Residential, commercial & industrial', 'Free site inspection & quote'],
     faqs: [
       {
         q: 'What does roof waterproofing cost?',
@@ -362,6 +369,59 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: 'roof-repairs',
+    name: 'Roof Repairs & Leak Detection',
+    lines: [{t: 'Roof repairs &'}, {t: 'leak detection', i: true}],
+    short: 'Tracing leaks to their real source and repairing them properly: cracked sheets, slipped tiles, failed flashings, rusted fixings and storm damage, plus new roof installations.',
+    seoTitle: 'Roof Repairs & Leak Detection | West Coast Roof Care',
+    seoDescription: 'Roof leak detection and repairs in Vredenburg, Saldanha, Langebaan and the West Coast: tiles, sheeting, flashings and storm damage. Free inspections.',
+    hero: 'roof-replacement-ladders',
+    gallery: ['roof-renovation-gable-before', 'roof-replacement-retiling', 'roof-outlet-detail', 'torch-on-parapet'],
+    intro: [
+      'Water rarely comes through the ceiling where the leak actually is. It runs along sheets, battens and trusses before it drips, so patching the stain usually means the leak comes back with the next storm.',
+      'We trace every leak back to its real source, then repair it properly with the right materials for your roof. We repair tile, metal sheet, fibre-cement and flat concrete roofs, and also handle new roof installations.',
+    ],
+    sections: [
+      {
+        h: 'Common leaks we repair',
+        list: [
+          'Cracked, broken or slipped roof tiles',
+          'Rusted sheets, screws and washers on metal roofs',
+          'Failed flashings around chimneys, walls, skylights and vents',
+          'Lifted or cracked membranes on flat roofs and parapets',
+          'Leaking valleys, ridges and box gutters',
+          'Wind and storm damage',
+        ],
+      },
+      {
+        h: 'How we find a leak',
+        list: [
+          'Inside: we check ceiling stains and the roof space to see where the water travels',
+          'Outside: we inspect flashings, laps, fixings, valleys, ridges and gutters',
+          'Where needed, we water-test suspect areas to confirm the source',
+          'You get a clear explanation and a no-obligation quote for the repair',
+        ],
+      },
+      {
+        h: 'Roof installations',
+        p: [
+          'Building or extending? We install new roofs, from trusses and sheeting to tiles, flashings and ridges, and can waterproof flat sections in the same job.',
+        ],
+      },
+    ],
+    benefits: ['Leaks traced to the source', 'All roof types repaired', 'Storm damage repairs', 'Free inspection & quote'],
+    faqs: [
+      {
+        q: 'Why does my roof still leak after it was repaired?',
+        a: 'Usually because the repair treated the stain, not the source. Water can travel a long way inside a roof before it drips. We trace the leak to where it actually gets in and fix that point.',
+      },
+      {
+        q: 'Can a leaking roof be repaired instead of replaced?',
+        a: 'In most cases, yes. If the damage is localised, a proper repair is the economical choice. If leaks keep returning across the roof or the structure has failed, we will tell you honestly when replacement makes more sense.',
+      },
+    ],
+  },
+  {
     slug: 'high-pressure-cleaning',
     name: 'High Pressure Cleaning',
     lines: [{t: 'High pressure'}, {t: 'cleaning', i: true}],
@@ -403,6 +463,50 @@ export const services: Service[] = [
       {
         q: 'Can an asbestos roof be high pressure cleaned?',
         a: 'Not with ordinary high pressure cleaning, because it releases asbestos fibres. Asbestos-cement roofs need controlled methods under the 2020 regulations. As a registered asbestos contractor, we can advise on cleaning and encapsulation.',
+      },
+    ],
+  },
+  {
+    slug: 'gutter-cleaning',
+    name: 'Gutter Cleaning & Maintenance',
+    lines: [{t: 'Gutter cleaning &'}, {t: 'maintenance', i: true}],
+    short: 'Cleaning, repairing and sealing gutters, downpipes and box gutters so rainwater runs off the roof, not into the house.',
+    seoTitle: 'Gutter Cleaning & Repairs | West Coast Roof Care',
+    seoDescription: 'Gutter cleaning, repairs and sealing in Vredenburg, Saldanha, Langebaan and the West Coast. Gutters, downpipes and box gutters kept flowing. Free quotes.',
+    hero: 'torch-on-waterproofing-box-gutter',
+    gallery: ['torch-on-skylights', 'roof-outlet-detail'],
+    intro: [
+      'Blocked gutters are one of the most common causes of leaks and damp. When they overflow, water runs down walls, under fascias and back under roof sheets, causing stains, rot and peeling paint.',
+      'On the West Coast, gutters fill up with sand, leaves and bird nests, and salt air corrodes metal gutters and brackets. Regular cleaning and maintenance keeps the water flowing where it should.',
+    ],
+    sections: [
+      {
+        h: 'What gutter maintenance includes',
+        list: [
+          'Clearing leaves, sand and debris from gutters',
+          'Flushing and unblocking downpipes',
+          'Checking brackets and falls so water drains properly',
+          'Sealing leaking joints, corners and end caps',
+          'Repairing or replacing damaged gutter sections',
+          'Waterproofing box gutters with torch-on or liquid membranes',
+        ],
+      },
+      {
+        h: 'How often should gutters be cleaned?',
+        p: [
+          'At least once a year, ideally before the winter rains. Homes under trees or close to the dunes may need it more often, because leaves and wind-blown sand build up quickly.',
+        ],
+      },
+    ],
+    benefits: ['Gutters & downpipes cleared', 'Leaking joints sealed', 'Box gutter waterproofing', 'Before-winter maintenance'],
+    faqs: [
+      {
+        q: 'How often should my gutters be cleaned?',
+        a: 'At least once a year, best done before winter. Properties near trees or dunes may need cleaning more often.',
+      },
+      {
+        q: 'Can you fix a leaking box gutter?',
+        a: 'Yes. Box gutters are a common leak point. We clean them out and waterproof them with torch-on or a liquid membrane, depending on the gutter.',
       },
     ],
   },
@@ -451,6 +555,50 @@ export const services: Service[] = [
       {
         q: 'Do you paint commercial and industrial buildings?',
         a: 'Yes. We paint homes, shops, showrooms, offices and industrial buildings, inside and out.',
+      },
+    ],
+  },
+  {
+    slug: 'damp-proofing',
+    name: 'Damp Proofing & Wall Sealing',
+    lines: [{t: 'Damp proofing &'}, {t: 'wall sealing', i: true}],
+    short: 'Treating rising and penetrating damp, repairing cracks and sealing walls so paint stops peeling and walls stay dry.',
+    seoTitle: 'Damp Proofing & Wall Sealing | West Coast Roof Care',
+    seoDescription: 'Damp proofing, crack repairs and wall sealing in Vredenburg, Saldanha, Langebaan and the West Coast. Stop peeling paint, mould and damp walls.',
+    hero: 'basement-wall-membrane',
+    gallery: ['foundation-wall-waterproofing', 'foundation-waterproofing-trench'],
+    intro: [
+      'Damp shows up as bubbling or peeling paint, white salt marks on walls, mould, and a musty smell. Painting over it never lasts: the moisture keeps pushing through, and the problem comes back within months.',
+      'We find out where the moisture is coming from first, then treat the cause and seal the walls so the finish lasts.',
+    ],
+    sections: [
+      {
+        h: 'Types of damp we treat',
+        list: [
+          'Rising damp: ground moisture soaking up into walls where the damp-proof course is missing or has failed',
+          'Penetrating damp: rain getting in through cracks, porous walls, parapets and window sills',
+          'Damp from leaks: water from roofs, gutters or balconies running into the walls',
+        ],
+      },
+      {
+        h: 'How we fix it',
+        list: [
+          'Identify the source of the moisture',
+          'Repair cracks and damaged plaster',
+          'Seal and waterproof walls, parapets and foundations',
+          'Finish with breathable coatings that let walls dry out',
+        ],
+      },
+    ],
+    benefits: ['Cause found first', 'Cracks repaired & sealed', 'Wall & foundation waterproofing', 'Breathable finishes'],
+    faqs: [
+      {
+        q: 'Why does the paint keep peeling on my walls?',
+        a: 'Usually because moisture is getting into the wall, from rising damp, rain penetration or a leak. Until the cause is treated, new paint will keep failing. We find and fix the source before repainting.',
+      },
+      {
+        q: 'Do you waterproof foundations and retaining walls?',
+        a: 'Yes. We waterproof foundation, retaining and basement walls with torch-on and other membrane systems, ideally during construction.',
       },
     ],
   },
@@ -532,12 +680,19 @@ export const process = [
   {t: 'Completion', d: 'The job is finished on schedule, neatly, with the site left clean.'},
 ];
 
-export const whyUs = [
-  {t: '100% satisfaction guarantee', d: 'We are not done until you are happy with the work.'},
-  {t: 'Registered asbestos contractor', d: 'Approved for Type 2 asbestos work under the 2020 regulations.'},
-  {t: 'Local West Coast team', d: 'Based in Vredenburg. We know what coastal weather does to roofs.'},
-  {t: 'Quality products', d: 'Proven systems such as RubberRoof, Metaltreat and Thermoproof.'},
+export type IconName = 'shield' | 'check' | 'file' | 'home' | 'hardhat' | 'pin';
+
+export const whyUs: {t: string; d: string; icon: IconName}[] = [
+  {t: '10-year waterproof warranty', d: 'Our waterproofing is backed by a 10-year waterproof warranty. The terms are set out in your quotation.', icon: 'shield'},
+  {t: 'Bostik approved applicator', d: 'Approved to apply Bostik waterproofing and sealing systems, using proven, quality products.', icon: 'check'},
+  {t: 'Registered asbestos contractor', d: 'Approved for Type 2 asbestos work under the Asbestos Abatement Regulations 2020.', icon: 'file'},
+  {t: '100% satisfaction guarantee', d: 'Honest, dependable service. We are not done until you are happy with the work.', icon: 'home'},
+  {t: 'Able to work at heights', d: 'Our team is trained, equipped and compliant for safe work on any roof.', icon: 'hardhat'},
+  {t: 'Local West Coast team', d: 'Based in Vredenburg. We work together to deliver the best results on every job.', icon: 'pin'},
 ];
+
+/** Short trust line under the home-page hero buttons. */
+export const trust = ['10-year waterproof warranty', 'Bostik approved applicator', 'Registered asbestos contractor'];
 
 export const reviews = [
   {name: 'Greg Holloway', text: 'Customer-first approach, with outstanding service and workmanship. Thank you Wimpie and team.'},
@@ -607,6 +762,14 @@ export const faqs = [
   {
     q: 'Which areas do you service?',
     a: 'We are based in Vredenburg and work across the West Coast, including Saldanha, Langebaan, St Helena Bay and surrounding areas, as well as the wider Western Cape.',
+  },
+  {
+    q: 'Do you give a warranty on waterproofing?',
+    a: 'Yes. Our waterproofing is backed by a 10-year waterproof warranty. The terms depend on the system used and the roof, and are set out in your quotation.',
+  },
+  {
+    q: 'Are you a Bostik approved applicator?',
+    a: 'Yes. West Coast Roof Care is a Bostik approved applicator for Bostik waterproofing and sealing systems.',
   },
   {
     q: 'Do you offer inspections and quotations?',
