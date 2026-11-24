@@ -12,7 +12,7 @@ const alt = (n: string) => projects.find((p) => p.img === n)?.alt ?? 'Completed 
   {
     pick.map((n, i) => (
       <li class="overflow-hidden" data-reveal style={`--d: ${i * 0.06}s`}>
-        <Image src={photo(n)} alt={alt(n)} widths={[400, 700, 1000]} sizes="(min-width:1024px) 25vw, 50vw" class="aspect-square h-full w-full object-cover transition-transform duration-[1.2s] ease-silk hover:scale-105" />
+        <Image quality={72} src={photo(n)} alt={alt(n)} widths={[400, 700, 1000]} sizes="(min-width:1024px) 25vw, 50vw" class="aspect-square h-full w-full object-cover transition-transform duration-[1.2s] ease-silk hover:scale-105" />
       </li>
     ))
   }

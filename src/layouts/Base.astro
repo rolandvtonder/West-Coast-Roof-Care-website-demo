@@ -1,4 +1,13 @@
 ---
+// Fonts are self-hosted (no render-blocking request to Google). Only the
+// weights the design uses; unicode-range means browsers fetch latin only.
+import '@fontsource/barlow/400.css';
+import '@fontsource/barlow/600.css';
+import '@fontsource/barlow/700.css';
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource/barlow-condensed/700-italic.css';
+import displayFont from '@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2?url';
+import bodyFont from '@fontsource/barlow/files/barlow-latin-400-normal.woff2?url';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Menu from '../components/Menu.astro';
@@ -99,12 +108,9 @@ const allSchema = [businessSchema, ...schema];
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700&family=Barlow:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- The headline font is the largest paint on every page, so fetch it first. -->
+    <link rel="preload" as="font" type="font/woff2" href={displayFont} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={bodyFont} crossorigin />
     {preload && <link rel="preload" as="image" href={preload} fetchpriority="high" />}
 
     <script is:inline>document.documentElement.classList.add('js');</script>

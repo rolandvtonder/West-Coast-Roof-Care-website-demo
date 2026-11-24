@@ -58,7 +58,8 @@ const year = new Date().getFullYear();
 
   <!-- Wordmark spans the full width at every size (measured, not guessed in vw). -->
   <div class="px-5 md:px-14" aria-hidden="true">
-    <span data-fit class="display inline-block leading-[0.8] whitespace-nowrap text-white/[0.07]">West Coast Roof Care</span>
+    <!-- Drawn via ::before so the faint decorative text isn't treated as readable copy. -->
+    <span data-fit data-text="West Coast Roof Care" class="display inline-block leading-[0.8] whitespace-nowrap text-white/[0.07] before:content-[attr(data-text)]"></span>
   </div>
   <p class="caps px-5 py-6 pb-24 text-white/50 md:px-14 md:pb-8">
     © {year} {business.legalName} · Roofer & waterproofer, {business.town}

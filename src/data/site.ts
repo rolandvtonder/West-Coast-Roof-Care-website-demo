@@ -69,9 +69,9 @@ export const towns: Town[] = [
   {
     slug: 'vredenburg',
     name: 'Vredenburg',
-    seoTitle: 'Roofing & Waterproofing Vredenburg | Local Roofer | West Coast Roof Care',
+    seoTitle: 'Roofing & Waterproofing Vredenburg | West Coast Roof Care',
     seoDescription:
-      'Vredenburg roofer and waterproofer: roof waterproofing, roof coating, roof replacement, painting and asbestos encapsulation. Our head office is in Vredenburg, so free inspections are quick to arrange.',
+      'Vredenburg roofer and waterproofer: waterproofing, roof coating, roof replacement and asbestos encapsulation. Our head office is in town. Free inspections.',
     hero: 'roof-replacement-complete',
     intro: [
       'Vredenburg is our home base. Our head office is here, so homeowners and businesses in town get the quickest inspections, the shortest travel times and a team that is never far away for follow-ups.',
@@ -92,9 +92,9 @@ export const towns: Town[] = [
   {
     slug: 'saldanha',
     name: 'Saldanha',
-    seoTitle: 'Roofing & Waterproofing Saldanha | Industrial & Home Roofs | West Coast Roof Care',
+    seoTitle: 'Roofing & Waterproofing Saldanha | West Coast Roof Care',
     seoDescription:
-      'Roof waterproofing, rust-proof roof coatings, roof replacement and painting in Saldanha. Homes, commercial and industrial buildings around Saldanha Bay. Free site inspections.',
+      'Roof waterproofing, rust-proof roof coatings, re-roofing and painting for homes, businesses and industrial buildings in Saldanha. Free site inspections.',
     hero: 'coated-iron-roof-aerial',
     intro: [
       'Saldanha sits right on the bay, with a busy harbour and a large industrial area. That mix means we work on everything here, from family homes facing the water to warehouses, workshops and commercial buildings.',
@@ -115,9 +115,9 @@ export const towns: Town[] = [
   {
     slug: 'langebaan',
     name: 'Langebaan',
-    seoTitle: 'Roofing & Waterproofing Langebaan | Roof Coating & Leak Repairs | West Coast Roof Care',
+    seoTitle: 'Roofing & Waterproofing Langebaan | West Coast Roof Care',
     seoDescription:
-      'Langebaan roofing and waterproofing: flat-roof waterproofing, roof coating, roof replacement and painting for homes near the lagoon. Free inspections and quotes.',
+      'Langebaan roofing and waterproofing: flat roofs, balconies, roof coating, re-roofing and painting for homes near the lagoon. Free inspections and quotes.',
     hero: 'hero-roof-coating-beachfront',
     intro: [
       'Langebaan homes are built for the view: open to the lagoon, the sea breeze and the sun. That same exposure is what wears roofs, flat roof decks and balconies down, especially on homes close to the water.',
@@ -138,9 +138,9 @@ export const towns: Town[] = [
   {
     slug: 'st-helena-bay',
     name: 'St Helena Bay',
-    seoTitle: 'Roofing & Waterproofing St Helena Bay | West Coast Roof Care',
+    seoTitle: 'Roofing & Waterproofing St Helena Bay | WC Roof Care',
     seoDescription:
-      'Roof waterproofing, roof coating, roof replacement and high pressure cleaning in St Helena Bay. Protection for homes close to the shoreline. Free site inspections.',
+      'Roof waterproofing, rust-proof roof coating, roof replacement and high pressure cleaning in St Helena Bay, built for life by the sea. Free inspections.',
     hero: 'torch-on-flat-roof-sea-view',
     intro: [
       'Along St Helena Bay, many homes and buildings sit close to the shoreline, where salt spray and damp sea air reach every roof sheet, screw and gutter.',
@@ -161,9 +161,9 @@ export const towns: Town[] = [
   {
     slug: 'malmesbury',
     name: 'Malmesbury',
-    seoTitle: 'Roofing & Waterproofing Malmesbury | Roof Repairs & Coating | West Coast Roof Care',
+    seoTitle: 'Roofing & Waterproofing Malmesbury | West Coast Roof Care',
     seoDescription:
-      'Roof waterproofing, roof coating, roof replacement, painting and asbestos encapsulation in Malmesbury and the Swartland. Free site inspections and quotes.',
+      'Roof waterproofing, roof coating, re-roofing, painting and asbestos encapsulation in Malmesbury and the Swartland. Free site inspections and quotes.',
     hero: 'roof-replacement-retiling',
     intro: [
       'Malmesbury is inland, in the heart of the Swartland, so roofs here face a different kind of weather than on the coast: hot, dry summers followed by cold, wet winters.',
@@ -198,9 +198,9 @@ export const nav = [
 export type Line = {t: string; i?: boolean};
 
 export const home = {
-  title: 'Roofing & Waterproofing on the West Coast | West Coast Roof Care',
+  title: 'Roofing & Waterproofing West Coast | West Coast Roof Care',
   description:
-    'Roof waterproofing, roof coating, roof replacement, high pressure cleaning, painting and registered asbestos encapsulation in Vredenburg, Saldanha, Langebaan and the Western Cape. Free site inspections.',
+    'Roof waterproofing, coating, replacement, cleaning, painting and registered asbestos work in Vredenburg, Saldanha, Langebaan and the West Coast. Free inspections.',
   lines: [{t: 'Built to'}, {t: 'protect.', i: true}, {t: 'Built for the'}, {t: 'West Coast.', i: true}] as Line[],
   body: 'Salt air, wind and winter storms are hard on a roof. We waterproof, coat and replace roofs across the West Coast so your property stays dry, year after year.',
 };
@@ -228,9 +228,9 @@ export const services: Service[] = [
     lines: [{t: 'All types of'}, {t: 'waterproofing', i: true}],
     short:
       'Torch-on, liquid, polyurethane and cementitious systems that stop water ingress, leaks and damp on roofs, balconies, basements and foundations.',
-    seoTitle: 'Roof Waterproofing West Coast | Torch-On & Liquid Membranes',
+    seoTitle: 'Waterproofing West Coast | Torch-On & Liquid Membranes',
     seoDescription:
-      'Professional waterproofing in Vredenburg, Saldanha, Langebaan and the Western Cape: torch-on, liquid membrane, polyurethane and cementitious systems for roofs, balconies and basements.',
+      'Torch-on, liquid, polyurethane and cementitious waterproofing for roofs, balconies and basements in Vredenburg, Saldanha, Langebaan and the West Coast.',
     hero: 'torch-on-flat-roof-sea-view',
     gallery: [
       'torch-on-flame-seam',
@@ -289,9 +289,9 @@ export const services: Service[] = [
     lines: [{t: 'Specialised'}, {t: 'roof coating', i: true}],
     short:
       'Protective coating systems such as RubberRoof, Metaltreat and Thermoproof that seal, rust-proof and extend the life of metal, tile and concrete roofs.',
-    seoTitle: 'Roof Coating & Roof Painting West Coast | RubberRoof, Metaltreat',
+    seoTitle: 'Roof Coating & Roof Painting | West Coast Roof Care',
     seoDescription:
-      'Specialised roof coatings for metal, IBR, tile and concrete roofs in Vredenburg, Langebaan, Saldanha and the Western Cape. Rust protection and weatherproofing that extends roof life.',
+      'Rust-proof roof coatings for metal, IBR, tile and concrete roofs in Vredenburg, Langebaan, Saldanha and the West Coast. RubberRoof, Metaltreat, Thermoproof.',
     hero: 'hero-roof-coating-beachfront',
     gallery: ['roof-coating-team-on-ladder', 'coated-iron-roof-aerial', 'white-coated-ibr-roof', 'roof-coating-crew', 'aerial-roof-coating-topdown'],
     intro: [
@@ -327,9 +327,9 @@ export const services: Service[] = [
     name: 'Roof Replacement',
     lines: [{t: 'Roof'}, {t: 'replacement', i: true}],
     short: 'Complete re-roofing for ageing, damaged and weathered roofs, from stripping and new trusses to new sheeting or tiles.',
-    seoTitle: 'Roof Replacement & Re-Roofing West Coast | West Coast Roof Care',
+    seoTitle: 'Roof Replacement & Re-Roofing | West Coast Roof Care',
     seoDescription:
-      'Roof replacement and re-roofing in Vredenburg, Saldanha, Langebaan and the Western Cape. Stripping, structural repairs, new trusses, sheeting and tiles done professionally.',
+      'Roof replacement and re-roofing on the West Coast: stripping, truss and gable repairs, new sheeting and tiles. Free inspections in Vredenburg and surrounds.',
     hero: 'roof-replacement-complete',
     gallery: ['roof-replacement-trusses', 'gable-rebuild-brick', 'roof-replacement-retiling', 'roof-replacement-ladders', 'roof-renovation-gable-before'],
     intro: [
@@ -366,11 +366,11 @@ export const services: Service[] = [
     name: 'High Pressure Cleaning',
     lines: [{t: 'High pressure'}, {t: 'cleaning', i: true}],
     short: 'Removes dirt, algae, moss and loose paint, and prepares roofs, walls and paving for coating, painting and waterproofing.',
-    seoTitle: 'High Pressure Roof Cleaning West Coast | West Coast Roof Care',
+    seoTitle: 'High Pressure Roof Cleaning | West Coast Roof Care',
     seoDescription:
-      'High pressure cleaning of roofs, walls and paving in Vredenburg, Langebaan, Saldanha and the Western Cape. Removes algae, grime and flaking paint before coating.',
+      'High pressure cleaning of roofs, walls and paving on the West Coast. Removes algae, salt and flaking paint so coatings and paint bond and last.',
     hero: 'high-pressure-cleaning-roof',
-    gallery: ['fibre-cement-roof-treatment', 'coastal-home-scaffold'],
+    gallery: ['coastal-home-scaffold', 'roof-coating-team-on-ladder', 'white-coated-ibr-roof'],
     intro: [
       'Dirt, algae and salt build-up hold moisture against your roof and shorten its life. High pressure cleaning restores the surface and is the first step before any coating or paint system.',
       'Our teams work safely at height with harnesses and the right equipment for each surface.',
@@ -380,20 +380,42 @@ export const services: Service[] = [
         h: 'What we clean',
         list: ['Tile, metal and fibre-cement roofs', 'Walls and boundary walls', 'Paving and driveways', 'Surfaces before painting or waterproofing'],
       },
+      {
+        h: 'Why clean before coating or painting?',
+        p: [
+          'A coating or paint system only lasts as long as its bond with the surface. Dirt, salt deposits, algae and chalky old paint stop new coatings from gripping, which leads to peeling and blistering within a season or two. Proper cleaning is the step that makes the rest of the job last.',
+        ],
+      },
+      {
+        h: 'The right pressure for each surface',
+        p: [
+          'Steel sheeting, concrete tiles and paving can take a strong clean. Older tiles and fibre-cement need a gentler approach. We adjust pressure and technique so the surface gets properly clean without forcing water under laps or damaging the material.',
+          'Asbestos-cement roofs are different: they must never be cleaned with ordinary high pressure washing, because it releases fibres. Those roofs need a controlled method under the Asbestos Abatement Regulations, which we handle as a registered asbestos contractor.',
+        ],
+      },
     ],
     benefits: ['Removes algae & grime', 'Proper prep for coatings', 'Safe work at height', 'Homes & commercial'],
-    faqs: [],
+    faqs: [
+      {
+        q: 'Can high pressure cleaning damage my roof?',
+        a: 'Done carelessly, yes. Too much pressure can force water under tiles and laps or damage softer surfaces. We match the pressure and technique to the roof so it is cleaned thoroughly and safely.',
+      },
+      {
+        q: 'Can an asbestos roof be high pressure cleaned?',
+        a: 'Not with ordinary high pressure cleaning, because it releases asbestos fibres. Asbestos-cement roofs need controlled methods under the 2020 regulations. As a registered asbestos contractor, we can advise on cleaning and encapsulation.',
+      },
+    ],
   },
   {
     slug: 'painting',
     name: 'Residential & Industrial Painting',
     lines: [{t: 'Residential &'}, {t: 'industrial painting', i: true}],
     short: 'Interior and exterior painting for homes, commercial and industrial buildings, with coatings chosen for coastal conditions.',
-    seoTitle: 'Painting Contractors West Coast | Residential & Industrial Painting',
+    seoTitle: 'Painting Contractors West Coast | West Coast Roof Care',
     seoDescription:
-      'Residential, commercial and industrial painting in Vredenburg, Saldanha, Langebaan and the Western Cape. Exterior coatings built for salt air, wind and sun.',
-    hero: 'commercial-building-painting',
-    gallery: ['commercial-showroom-painting', 'company-van-commercial-project', 'double-storey-coastal-home'],
+      'Exterior, interior and industrial painting in Vredenburg, Saldanha, Langebaan and the West Coast, with coatings made for salt air, wind and sun.',
+    hero: 'commercial-showroom-painting',
+    gallery: ['commercial-building-painting', 'company-van-commercial-project', 'double-storey-coastal-home'],
     intro: [
       'Coastal buildings need paint that does more than look good. We use quality pure acrylic emulsion coatings that protect against the weather and corrosion while letting walls breathe, acting as a one-way membrane that keeps rain out and lets moisture escape.',
       'From family homes to showrooms and industrial buildings, we prepare surfaces properly and leave a clean, even finish.',
@@ -403,9 +425,34 @@ export const services: Service[] = [
         h: 'Painting services',
         list: ['Exterior walls and fascias', 'Interior painting', 'Commercial and industrial buildings', 'Damp-proofing and crack repairs before painting'],
       },
+      {
+        h: 'Preparation makes the paint job',
+        list: [
+          'High pressure cleaning to remove dirt, salt and algae',
+          'Scraping and sanding loose or flaking paint',
+          'Filling cracks and treating damp areas',
+          'Priming bare or repaired surfaces',
+          'Two finishing coats of quality exterior paint',
+        ],
+      },
+      {
+        h: 'Paint made for coastal conditions',
+        p: [
+          'Salt air, strong UV and wind-driven rain break down ordinary paint quickly on the West Coast. We use pure acrylic exterior coatings that resist the weather, protect against corrosion and let the walls breathe, so moisture inside the wall can escape instead of blistering the paint.',
+        ],
+      },
     ],
     benefits: ['Coastal-grade coatings', 'Thorough surface prep', 'Homes, shops & industry', 'Clean, even finish'],
-    faqs: [],
+    faqs: [
+      {
+        q: 'How often should exterior walls be repainted on the coast?',
+        a: 'It depends on how exposed the walls are and the paint used. Coastal exteriors need maintenance more often than inland ones. A yearly look lets you touch up early instead of repainting everything later.',
+      },
+      {
+        q: 'Do you paint commercial and industrial buildings?',
+        a: 'Yes. We paint homes, shops, showrooms, offices and industrial buildings, inside and out.',
+      },
+    ],
   },
   {
     slug: 'asbestos-removal',
@@ -413,10 +460,10 @@ export const services: Service[] = [
     lines: [{t: 'Asbestos'}, {t: 'encapsulation', i: true}],
     short:
       'Registered asbestos contractor for the responsible encapsulation and removal of asbestos roofs and building materials, in line with the 2020 regulations.',
-    seoTitle: 'Asbestos Roof Encapsulation & Removal West Coast | Registered Contractor',
+    seoTitle: 'Asbestos Encapsulation & Removal | West Coast Roof Care',
     seoDescription:
-      'Registered asbestos contractor (Type 2 work, Asbestos Abatement Regulations 2020) for asbestos roof encapsulation and removal in Vredenburg, Saldanha, Langebaan and the Western Cape.',
-    hero: 'fibre-cement-roof-treatment',
+      'Registered asbestos contractor (Type 2, 2020 regulations) for asbestos roof encapsulation and removal in Vredenburg, Saldanha, Langebaan and the West Coast.',
+    hero: 'roof-coating-crew',
     gallery: [],
     intro: [
       'Many older West Coast buildings still have asbestos-cement roof sheets. Left alone they are usually stable, but as they weather, crack or get broken, fibres can be released, and that is a serious health risk.',
@@ -438,12 +485,32 @@ export const services: Service[] = [
           'Work done in line with the Asbestos Abatement Regulations 2020',
         ],
       },
+      {
+        h: 'Does my roof contain asbestos?',
+        p: [
+          'Asbestos-cement was widely used in South Africa for roof sheets, ceilings, gutters and water tanks until it was banned in 2008. Grey corrugated or flat fibre-cement sheets on older buildings often contain asbestos. Only a sample test can confirm it, and we can arrange that as part of the inspection.',
+        ],
+      },
+      {
+        h: 'Why asbestos work must be done by a registered contractor',
+        p: [
+          'Asbestos is dangerous when it is disturbed. Breaking, cutting, drilling, sanding or pressure-washing the sheets releases fibres that can be inhaled. That is why the regulations require registered contractors, controlled work methods and proper disposal. Please do not try to remove or clean an asbestos roof yourself.',
+        ],
+      },
     ],
     benefits: ['Registered asbestos contractor', 'Type 2 work approved', 'Safety-first procedures', 'Encapsulation or removal'],
     faqs: [
       {
         q: 'Is asbestos encapsulation safe?',
         a: 'Yes, when done by a registered contractor using the correct procedures. Encapsulation seals the surface so fibres cannot be released, and it avoids disturbing the material where removal is not needed.',
+      },
+      {
+        q: 'Can I remove asbestos roof sheets myself?',
+        a: 'No. Asbestos work must be done by a registered asbestos contractor following the Asbestos Abatement Regulations 2020, including safe removal and disposal.',
+      },
+      {
+        q: 'How do I know if my roof is asbestos?',
+        a: 'Grey fibre-cement roof sheets on buildings from before 2008 often contain asbestos, but only a sample test can confirm it. We can check during a site inspection.',
       },
     ],
   },

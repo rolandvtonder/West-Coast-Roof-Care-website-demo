@@ -89,7 +89,7 @@ const altFor = (n: string) => projects.find((p) => p.img === n)?.alt ?? `${s.nam
         <ul class="grid grid-cols-2 gap-[3px] md:grid-cols-3">
           {s.gallery.map((n, i) => (
             <li class="overflow-hidden" data-reveal style={`--d: ${(i % 3) * 0.06}s`}>
-              <Image src={photo(n)} alt={altFor(n)} widths={[480, 800, 1200]} sizes="(min-width:768px) 33vw, 50vw" class="aspect-[4/3] h-full w-full object-cover" />
+              <Image quality={72} src={photo(n)} alt={altFor(n)} widths={[360, 480, 800, 1200]} sizes="(min-width:768px) 33vw, 50vw" class="aspect-[4/3] h-full w-full object-cover" />
             </li>
           ))}
         </ul>

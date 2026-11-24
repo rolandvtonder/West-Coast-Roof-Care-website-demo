@@ -5,7 +5,7 @@ import {panels, photo} from '../data/site';
 // Three tall panels slide in from the right one after another. Each shows its
 // own third of ONE aerial photo, so three panels cost a single download and
 // line up into one continuous picture with no seams.
-const shared = await getImage({src: photo('aerial-roof-coating-topdown'), widths: [1280, 2048], format: 'webp'});
+const shared = await getImage({src: photo('aerial-roof-coating-topdown'), widths: [640, 960, 1280, 2048], format: 'webp', quality: 72});
 const tints = ['#9c0d14', '#19191b', '#1b4f80'];
 ---
 

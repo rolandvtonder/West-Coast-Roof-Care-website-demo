@@ -27,7 +27,14 @@ requestAnimationFrame(loop);
 document.querySelectorAll<HTMLElement>('[data-hero]').forEach((root) => {
   const stage = root.querySelector<HTMLElement>('[data-hero-stage]');
   if (!stage || reduced) return;
+  // Only measure when the page has actually moved: idle frames cost nothing.
+  let lastY = -1;
+  let lastH = -1;
   subscribers.add(() => {
+    const y = window.scrollY;
+    if (y === lastY && window.innerHeight === lastH) return;
+    lastY = y;
+    lastH = window.innerHeight;
     const r = root.getBoundingClientRect();
     if (r.bottom < -50) return;
     const h = window.innerHeight;

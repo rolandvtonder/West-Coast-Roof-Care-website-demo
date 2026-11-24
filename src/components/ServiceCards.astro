@@ -13,7 +13,7 @@ const list = services.filter((s) => s.slug !== Astro.props.exclude);
     list.map((s, i) => (
       <li data-reveal style={`--d: ${(i % 3) * 0.06}s`}>
         <a href={`/services/${s.slug}/`} class="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden bg-coal p-7 text-white md:p-9">
-          <Image src={photo(s.hero)} alt="" widths={[480, 800]} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-silk group-hover:scale-105" />
+          <Image quality={72} src={photo(s.hero)} alt="" widths={[480, 800]} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-silk group-hover:scale-105" />
           <div class="absolute inset-0 bg-[linear-gradient(0deg,rgb(14_14_15/0.92),rgb(14_14_15/0.25)_60%,rgb(14_14_15/0.1))]" />
           <div class="relative">
             <h3 class="display text-[clamp(30px,2.6vw,44px)]">

@@ -25,7 +25,7 @@ const full = size === 'full';
 <section data-hero class={`relative overflow-hidden bg-ink ${full ? 'h-svh min-h-[640px]' : 'h-[78svh] min-h-[560px]'}`}>
   <div data-hero-stage class="absolute inset-0 origin-center will-change-transform">
     <div class="absolute inset-0 overflow-hidden">
-      <Image
+      <Image quality={72}
         src={image}
         alt={alt}
         widths={[640, 960, 1280, 1600, 2048]}

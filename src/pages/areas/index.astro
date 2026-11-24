@@ -10,8 +10,8 @@ const crumbs = [{name: 'Areas', href: '/areas/'}];
 ---
 
 <Base
-  title="Areas We Serve | Roofing & Waterproofing on the West Coast | West Coast Roof Care"
-  description="West Coast Roof Care serves Vredenburg, Saldanha, Langebaan, St Helena Bay, Malmesbury and the greater Western Cape with roofing, waterproofing and roof coating."
+  title="Areas We Serve on the West Coast | West Coast Roof Care"
+  description="Roofing, waterproofing and roof coating in Vredenburg, Saldanha, Langebaan, St Helena Bay, Malmesbury and the greater Western Cape."
   schema={[breadcrumbs(crumbs)]}
 >
   <Hero
@@ -31,7 +31,7 @@ const crumbs = [{name: 'Areas', href: '/areas/'}];
         towns.map((t, i) => (
           <li data-reveal style={`--d: ${(i % 3) * 0.06}s`}>
             <a href={`/areas/${t.slug}/`} class="group relative flex aspect-[4/3] flex-col justify-end overflow-hidden bg-coal p-7 md:p-9">
-              <Image src={photo(t.hero)} alt="" widths={[480, 800]} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" class="absolute inset-0 h-full w-full object-cover opacity-70 transition-transform duration-[1.2s] ease-silk group-hover:scale-105" />
+              <Image quality={72} src={photo(t.hero)} alt="" widths={[480, 800]} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" class="absolute inset-0 h-full w-full object-cover opacity-70 transition-transform duration-[1.2s] ease-silk group-hover:scale-105" />
               <div class="absolute inset-0 bg-[linear-gradient(0deg,rgb(14_14_15/0.9),transparent_65%)]" />
               <div class="relative">
                 <p class="caps text-white/75">Roofing & waterproofing</p>
