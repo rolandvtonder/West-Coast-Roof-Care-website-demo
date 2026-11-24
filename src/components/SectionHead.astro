@@ -1,0 +1,17 @@
+---
+import type {Line} from '../data/site';
+interface Props {
+  eyebrow: string;
+  lines: Line[];
+  as?: 'h2' | 'h1';
+  class?: string;
+}
+const {eyebrow, lines, as: Tag = 'h2', class: cls = ''} = Astro.props;
+---
+
+<div class={cls}>
+  <p class="caps opacity-70" data-reveal>{eyebrow}</p>
+  <Tag class="display mt-4 text-[clamp(42px,5.4vw,96px)]" data-reveal style="--d: 0.08s">
+    {lines.map((l) => <span class={`block ${l.i ? 'it' : ''}`}>{l.t}</span>)}
+  </Tag>
+</div>

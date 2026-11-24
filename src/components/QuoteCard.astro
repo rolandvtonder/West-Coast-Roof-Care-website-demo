@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import {business} from '../data/site';
+interface Props {
+  title?: string;
+}
+const {title = 'Get a free site inspection'} = Astro.props;
+---
+
+<div class="bg-ink p-7 text-white md:p-9">
+  <p class="display text-[34px]">{title}</p>
+  <p class="mt-3 text-white/80">We inspect, find the cause and give you a detailed, no-obligation quote.</p>
+  <div class="mt-6 grid gap-2">
+    <a href="/contact/" class="btn btn-red justify-between">Request a quote <Icon name="arrow" class="size-4" /></a>
+    <a href={`tel:${business.phoneIntl}`} class="btn btn-ghost justify-between">{business.phone} <Icon name="phone" class="size-4" /></a>
+    <a href={business.whatsapp} target="_blank" rel="noopener" class="btn btn-ghost justify-between">WhatsApp {business.contact} <Icon name="chat" class="size-4" /></a>
+  </div>
+  <p class="caps mt-6 text-white/60">{business.hours}</p>
+</div>

@@ -1,0 +1,68 @@
+---
+import {getImage} from 'astro:assets';
+import {panels, photo} from '../data/site';
+
+// Three tall panels slide in from the right one after another. Each shows its
+// own third of ONE aerial photo, so three panels cost a single download and
+// line up into one continuous picture with no seams.
+const shared = await getImage({src: photo('aerial-roof-coating-topdown'), widths: [1280, 2048], format: 'webp'});
+const tints = ['#9c0d14', '#19191b', '#1b4f80'];
+---
+
+<section data-panels class="group relative bg-ink" aria-labelledby="panels-title">
+  <h2 id="panels-title" class="sr-only">Our core services</h2>
+  <div class="grid h-svh min-h-[640px] grid-cols-3 gap-[3px] overflow-hidden max-md:h-auto max-md:grid-cols-1">
+    {
+      panels.map((b, i) => (
+        <a
+          href={`/services/${b.slug}/`}
+          class="relative block translate-x-[calc(100%+100vw)] overflow-hidden transition-transform duration-[1100ms] ease-wipe group-[.is-in]:translate-x-0 max-md:h-[80svh] max-md:min-h-[520px]"
+          style={`transition-delay: ${0.12 + i * 0.16}s; background: ${tints[i]}`}
+        >
+          {/* One slice of the shared photo: three panels wide, shifted per panel. On mobile each panel shows the whole picture. */}
+          <img
+            src={shared.src}
+            srcset={shared.srcSet.attribute}
+            sizes="100vw"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            class="absolute top-0 h-full max-w-none object-cover md:w-[300%] max-md:inset-0 max-md:w-full"
+            style={`--l: ${-100 * i}%`}
+            data-slice
+          />
+          <div class="absolute inset-0 bg-[linear-gradient(180deg,rgb(14_14_15/0.7),rgb(14_14_15/0.1)_45%,rgb(14_14_15/0.55))]" />
+          <div class="relative flex h-full flex-col justify-between p-7 pt-28 md:p-9 md:pt-32">
+            <div>
+              <p class="caps text-white/70">0{i + 1} / 03</p>
+              <h3 class="display mt-3 text-[clamp(40px,3.8vw,68px)] text-white">
+                {b.lines.map((l) => (
+                  <span class={`block ${l.i ? 'it' : ''}`}>{l.t}</span>
+                ))}
+              </h3>
+            </div>
+            <div>
+              <dl class="space-y-3 opacity-0 transition-opacity delay-[1400ms] duration-700 group-[.is-in]:opacity-100">
+                {b.specs.map(([k, v]) => (
+                  <div>
+                    <dt class="caps text-white/65">{k}</dt>
+                    <dd class="text-[17px] font-semibold text-white">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+              <span class="caps mt-6 inline-flex items-center gap-2 border-b border-white/50 pb-1 text-white">Explore service →</span>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  @media (min-width: 768px) {
+    [data-slice] {
+      left: var(--l);
+    }
+  }
+</style>

@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import Process from '../../components/Process.astro';
+import QuoteCard from '../../components/QuoteCard.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+import {towns, photo, business, serviceBySlug, projects, type Town} from '../../data/site';
+import {breadcrumbs, faqSchema} from '../../data/seo';
+
+export function getStaticPaths() {
+  return towns.map((t) => ({params: {town: t.slug}, props: {t}}));
+}
+const {t} = Astro.props as {t: Town};
+const crumbs = [
+  {name: 'Areas', href: '/areas/'},
+  {name: t.name, href: `/areas/${t.slug}/`},
+];
+const url = `${business.url}/areas/${t.slug}/`;
+const schema = [
+  breadcrumbs(crumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: `Roofing & waterproofing in ${t.name}`,
+    serviceType: 'Roofing and waterproofing',
+    description: t.seoDescription,
+    url,
+    provider: {'@id': `${business.url}/#business`},
+    areaServed: {'@type': 'City', name: t.name, containedInPlace: {'@type': 'State', name: 'Western Cape'}},
+  },
+  faqSchema(t.faqs),
+];
+const others = towns.filter((o) => o.slug !== t.slug);
+const heroAlt = projects.find((p) => p.img === t.hero)?.alt ?? 'Roofing work by West Coast Roof Care';
+---
+
+<Base title={t.seoTitle} description={t.seoDescription} schema={schema}>
+  <Hero
+    eyebrow={`Roofer & waterproofer · ${t.name}`}
+    lines={[{t: 'Roofing &'}, {t: 'waterproofing', i: true}, {t: `in ${t.name}`}]}
+    body={`Free site inspections and no-obligation quotes for homes and businesses in ${t.name}.`}
+    image={photo(t.hero)}
+    alt={heroAlt}
+    crumbs={crumbs}
+  />
+
+  <section class="on-light bg-paper py-20 text-ink md:py-28">
+    <div class="mx-auto grid max-w-[1680px] gap-14 px-5 md:px-14 lg:grid-cols-[1fr_400px]">
+      <article class="prose-wc">
+        {t.intro.map((p, i) => <p class={i === 0 ? 'text-[21px] leading-relaxed' : ''} data-reveal>{p}</p>)}
+
+        <h2 data-reveal>What {t.name} weather does to roofs</h2>
+        <ul data-reveal>
+          {t.challenges.map((c) => <li>{c}</li>)}
+        </ul>
+
+        <h2 data-reveal>Our services in {t.name}</h2>
+        <div class="not-prose mt-6 grid gap-3 sm:grid-cols-2" data-reveal>
+          {
+            t.focus.map((slug) => {
+              const s = serviceBySlug(slug);
+              return (
+                <a href={`/services/${s.slug}/`} class="group flex flex-col justify-between gap-4 bg-stone p-6 transition-colors hover:bg-ink hover:text-white">
+                  <span class="display text-[26px]">{s.name}</span>
+                  <span class="text-[15px] opacity-80">{s.short}</span>
+                  <span class="caps inline-flex items-center gap-2 text-red group-hover:text-red-bright">
+                    {s.name.split(' ')[0]} in {t.name} <Icon name="arrow" class="size-4" />
+                  </span>
+                </a>
+              );
+            })
+          }
+        </div>
+      </article>
+
+      <aside class="space-y-6 lg:sticky lg:top-28 lg:self-start">
+        <QuoteCard title={`Free roof inspection in ${t.name}`} />
+        <div class="bg-stone p-7 md:p-9">
+          <p class="caps text-ink/70">Also serving</p>
+          <ul class="mt-4 space-y-2">
+            {others.map((o) => <li><a href={`/areas/${o.slug}/`} class="flex items-center gap-2 font-semibold hover:text-red"><Icon name="pin" class="size-4 text-red" /> {o.name}</a></li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="on-light bg-stone py-20 text-ink md:py-28">
+    <div class="mx-auto grid max-w-[1680px] gap-12 px-5 md:px-14 lg:grid-cols-[1fr_1.4fr]">
+      <SectionHead eyebrow={`${t.name} questions`} lines={[{t: 'Local'}, {t: 'FAQ', i: true}]} />
+      <Faq items={t.faqs} />
+    </div>
+  </section>
+
+  <Process />
+
+  <section class="bg-ink pt-24 md:pt-32">
+    <div class="mx-auto max-w-[1680px] px-5 pb-14 md:px-14">
+      <SectionHead eyebrow={`All services in ${t.name}`} lines={[{t: 'Complete property'}, {t: 'protection', i: true}]} />
+    </div>
+    <ServiceCards />
+  </section>
+</Base>

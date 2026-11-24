@@ -1,0 +1,41 @@
+---
+import {Image} from 'astro:assets';
+import logo from '../assets/brand/logo-round.png';
+import Icon from './Icon.astro';
+import {business} from '../data/site';
+---
+
+<!-- Logo stays in full colour; the wordmark beside it uses difference blending
+     so it reads on both dark photos and light sections. -->
+<a href="/" class="fixed top-4 left-4 z-[55] flex items-center gap-3 md:top-6 md:left-10" aria-label={`${business.name} home`}>
+  <Image src={logo} alt="" width={64} height={64} densities={[1, 2]} loading="eager" class="size-12 rounded-full shadow-[0_4px_20px_rgb(0_0_0/0.35)] md:size-16" />
+</a>
+<span
+  class="display pointer-events-none fixed top-[30px] left-[76px] z-[55] text-[15px] leading-none tracking-[0.12em] text-white mix-blend-difference max-sm:hidden md:top-[44px] md:left-[118px] md:text-[17px]"
+  aria-hidden="true">West Coast <span class="block">Roof Care</span></span
+>
+
+<button
+  id="menu-toggle"
+  type="button"
+  aria-expanded="false"
+  aria-controls="site-menu"
+  class="caps group fixed top-5 right-4 z-[56] flex min-h-12 items-center gap-4 bg-ink/55 px-6 py-3 text-white backdrop-blur-md transition-colors duration-500 hover:bg-ink/80 data-[open]:bg-ink data-[open]:text-white md:top-7 md:right-8"
+>
+  <span data-label>Menu</span>
+  <Icon name="plus" class="size-4 transition-transform duration-500 ease-silk group-data-[open]:rotate-45" />
+</button>
+
+<!-- Fixed actions, bottom right: WhatsApp, call (mobile) and the quote box. -->
+<div
+  data-fab
+  class="fixed right-4 bottom-4 z-[55] flex items-stretch gap-2 transition-[opacity,translate] duration-500 data-[hidden]:pointer-events-none data-[hidden]:translate-y-4 data-[hidden]:opacity-0 md:right-8 md:bottom-7"
+>
+  <a href={business.whatsapp} target="_blank" rel="noopener" class="flex min-h-12 min-w-12 items-center justify-center bg-[#1f9d55] text-white transition-colors hover:bg-[#178246]" aria-label={`WhatsApp ${business.contact} on ${business.phone}`}>
+    <Icon name="chat" class="size-5" />
+  </a>
+  <a href={`tel:${business.phoneIntl}`} class="flex min-h-12 min-w-12 items-center justify-center bg-ink text-white md:hidden" aria-label={`Call ${business.phone}`}>
+    <Icon name="phone" class="size-5" />
+  </a>
+  <a href="/contact/" class="btn btn-white shadow-[0_10px_30px_rgb(0_0_0/0.25)]">Free <em class="font-semibold normal-case">quote</em></a>
+</div>

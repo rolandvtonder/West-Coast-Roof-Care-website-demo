@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import {photo, business, services, areas} from '../data/site';
+import {breadcrumbs} from '../data/seo';
+const crumbs = [{name: 'Contact', href: '/contact/'}];
+const demo = import.meta.env.PUBLIC_DEMO === '1'; // GitHub Pages preview has no PHP
+const field = 'mt-2 block min-h-12 w-full border border-ink/25 bg-white px-4 py-3 text-[16px] text-ink outline-none transition-colors focus:border-ink aria-[invalid=true]:border-red';
+---
+
+<Base
+  title="Contact Us | Free Roof Inspection & Quote | West Coast Roof Care"
+  description={`Request a free site inspection and quote. Call or WhatsApp ${business.contact} on ${business.phone} or email ${business.email}. Based in Vredenburg, serving the West Coast.`}
+  schema={[breadcrumbs(crumbs), {'@context': 'https://schema.org', '@type': 'ContactPage', about: {'@id': `${business.url}/#business`}}]}
+>
+  <Hero lines={[{t: 'Let’s protect'}, {t: 'your property.', i: true}]} body="Tell us about your roof and we’ll arrange a free site inspection and a no-obligation quote." image={photo('roof-coating-team-on-ladder')} alt="Roofers coating a metal roof" crumbs={crumbs} ctas={false} />
+
+  <section class="on-light bg-paper py-20 text-ink md:py-28">
+    <div class="mx-auto grid max-w-[1680px] gap-14 px-5 md:px-14 lg:grid-cols-[1.3fr_1fr]">
+      <div>
+        <h2 class="display text-[clamp(38px,4vw,64px)]">Request a <span class="it">free quote</span></h2>
+        <p class="mt-3 text-ink/75">Fields marked <span class="text-red">*</span> are required. We usually reply within one working day.</p>
+
+        <div data-form-error hidden role="alert" class="mt-6 border-l-4 border-red bg-red/10 p-4">
+          Sorry, your message could not be sent. Please try again, or call or WhatsApp us on <a class="font-semibold underline" href={`tel:${business.phoneIntl}`}>{business.phone}</a>.
+        </div>
+
+        <form action={demo ? '/thank-you/' : '/send.php'} method="post" data-demo={demo ? '' : undefined} class="mt-8 grid gap-6 sm:grid-cols-2" data-quote-form>
+          <div>
+            <label for="f-name" class="font-semibold">Full name <span class="text-red">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100" class={field} aria-describedby="e-name" />
+            <p id="e-name" class="mt-1 text-[14px] text-red" data-err></p>
+          </div>
+          <div>
+            <label for="f-phone" class="font-semibold">Phone <span class="text-red">*</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="[0-9 +()\-]{9,20}" class={field} aria-describedby="e-phone" />
+            <p id="e-phone" class="mt-1 text-[14px] text-red" data-err></p>
+          </div>
+          <div>
+            <label for="f-email" class="font-semibold">Email <span class="text-red">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="150" class={field} aria-describedby="e-email" />
+            <p id="e-email" class="mt-1 text-[14px] text-red" data-err></p>
+          </div>
+          <div>
+            <label for="f-town" class="font-semibold">Town / suburb <span class="text-red">*</span></label>
+            <input id="f-town" name="town" type="text" autocomplete="address-level2" list="towns" required maxlength="100" class={field} aria-describedby="e-town" />
+            <datalist id="towns">{areas.map((a) => <option value={a} />)}</datalist>
+            <p id="e-town" class="mt-1 text-[14px] text-red" data-err></p>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="f-service" class="font-semibold">Service needed</label>
+            <select id="f-service" name="service" class={field}>
+              <option value="">Not sure, please advise</option>
+              {services.map((s) => <option>{s.name}</option>)}
+              <option>GGC Steel: structural steel</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="f-msg" class="font-semibold">Tell us about the job <span class="text-red">*</span></label>
+            <textarea id="f-msg" name="message" rows="5" required maxlength="3000" class={field} aria-describedby="e-msg h-msg"></textarea>
+            <p id="h-msg" class="mt-1 text-[14px] text-ink/65">E.g. type of roof, where it leaks, and roughly how big the area is.</p>
+            <p id="e-msg" class="mt-1 text-[14px] text-red" data-err></p>
+          </div>
+          <!-- Spam trap: hidden from people, filled in by bots. -->
+          <div class="absolute -left-[9999px]" aria-hidden="true">
+            <label for="f-web">Leave this empty</label>
+            <input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="sm:col-span-2">
+            <button type="submit" class="btn btn-red disabled:cursor-wait disabled:opacity-60" data-submit>
+              <span data-submit-label>Send my request</span>
+              <Icon name="arrow" class="size-4" />
+            </button>
+            <p class="mt-4 text-[14px] text-ink/65">We only use your details to respond to your enquiry (POPIA).</p>
+            {demo && <p class="mt-2 text-[14px] font-semibold text-red">Demo preview: this form is not connected yet, so no email will be sent.</p>}
+          </div>
+        </form>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="bg-ink p-7 text-white md:p-9">
+          <p class="caps text-white/65">Prefer to talk?</p>
+          <p class="display mt-3 text-[34px]">Call or WhatsApp {business.contact}</p>
+          <div class="mt-6 grid gap-2">
+            <a href={`tel:${business.phoneIntl}`} class="btn btn-red justify-between">{business.phone} <Icon name="phone" class="size-4" /></a>
+            <a href={business.whatsapp} target="_blank" rel="noopener" class="btn btn-ghost justify-between">Chat on WhatsApp <Icon name="chat" class="size-4" /></a>
+            <a href={`mailto:${business.email}`} class="btn btn-ghost justify-between normal-case tracking-normal">{business.email} <Icon name="mail" class="size-4" /></a>
+          </div>
+          <dl class="mt-8 grid gap-4">
+            <div><dt class="caps text-white/65">Head office</dt><dd>{business.town}, {business.region}, {business.postcode}</dd></div>
+            <div><dt class="caps text-white/65">Office hours</dt><dd>{business.hours}</dd></div>
+          </dl>
+        </div>
+        <iframe
+          title="Map showing Vredenburg, Western Cape"
+          src="https://www.google.com/maps?q=Vredenburg,+Western+Cape,+7380&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="aspect-[4/3] w-full border-0 grayscale"></iframe>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-quote-form]');
+  if (new URLSearchParams(location.search).has('error')) {
+    document.querySelector<HTMLElement>('[data-form-error]')!.hidden = false;
+  }
+  if (form) {
+    form.noValidate = true;
+    const messages: Record<string, string> = {
+      name: 'Please enter your name.',
+      phone: 'Please enter a valid phone number, e.g. 082 123 4567.',
+      email: 'Please enter a valid email address, e.g. name@example.com.',
+      town: 'Please tell us which town the property is in.',
+      message: 'Please describe the job so we can help.',
+    };
+    const fields = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]'));
+    const check = (el: HTMLInputElement | HTMLTextAreaElement) => {
+      const ok = el.checkValidity();
+      el.setAttribute('aria-invalid', String(!ok));
+      const err = document.getElementById(`e-${el.id.slice(2)}`);
+      if (err) err.textContent = ok ? '' : messages[el.name] ?? 'Please fill in this field.';
+      return ok;
+    };
+    fields.forEach((el) => el.addEventListener('blur', () => el.value && check(el)));
+    form.addEventListener('submit', (e) => {
+      const bad = fields.filter((el) => !check(el));
+      if (bad.length) {
+        e.preventDefault();
+        bad[0].focus();
+        return;
+      }
+      if (form.hasAttribute('data-demo')) {
+        // Demo preview (no PHP on GitHub Pages): show the thank-you page, send nothing.
+        e.preventDefault();
+        location.href = form.action;
+        return;
+      }
+      const btn = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+      btn.disabled = true;
+      form.querySelector('[data-submit-label]')!.textContent = 'Sending…';
+    });
+  }
+</script>

@@ -1,0 +1,120 @@
+---
+import {Image} from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import QuoteCard from '../../components/QuoteCard.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+import {services, photo, projects, areas, towns, business, type Service} from '../../data/site';
+import {breadcrumbs, faqSchema} from '../../data/seo';
+
+export function getStaticPaths() {
+  return services.map((s) => ({params: {slug: s.slug}, props: {s}}));
+}
+const {s} = Astro.props as {s: Service};
+const crumbs = [
+  {name: 'Services', href: '/services/'},
+  {name: s.name, href: `/services/${s.slug}/`},
+];
+const url = `${business.url}/services/${s.slug}/`;
+const schema: Record<string, unknown>[] = [
+  breadcrumbs(crumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: s.name,
+    serviceType: s.name,
+    description: s.seoDescription,
+    url,
+    provider: {'@id': `${business.url}/#business`},
+    areaServed: [...areas.map((a) => ({'@type': 'City', name: a})), {'@type': 'State', name: 'Western Cape'}],
+  },
+];
+if (s.faqs.length) schema.push(faqSchema(s.faqs));
+const altFor = (n: string) => projects.find((p) => p.img === n)?.alt ?? `${s.name} by West Coast Roof Care`;
+---
+
+<Base title={s.seoTitle} description={s.seoDescription} schema={schema}>
+  <Hero lines={s.lines} body={s.short} image={photo(s.hero)} alt={altFor(s.hero)} crumbs={crumbs} eyebrow="West Coast & Western Cape" />
+
+  <section class="on-light bg-paper py-20 text-ink md:py-28">
+    <div class="mx-auto grid max-w-[1680px] gap-14 px-5 md:px-14 lg:grid-cols-[1fr_400px]">
+      <article class="prose-wc">
+        {s.intro.map((p, i) => <p class={i === 0 ? 'text-[21px] leading-relaxed' : ''} data-reveal>{p}</p>)}
+        {
+          s.sections.map((sec) => (
+            <div data-reveal>
+              <h2>{sec.h}</h2>
+              {sec.p?.map((p) => <p>{p}</p>)}
+              {sec.list && (
+                <ul>
+                  {sec.list.map((li) => (
+                    <li>{li}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))
+        }
+        <h2 data-reveal>Serving the West Coast</h2>
+        <p data-reveal>
+          We provide {s.name.toLowerCase()} in{' '}
+          {towns.map((t, i) => (
+            <>
+              <a href={`/areas/${t.slug}/`} class="text-red underline">{t.name}</a>
+              {i < towns.length - 2 ? ', ' : i === towns.length - 2 ? ' and ' : ''}
+            </>
+          ))}, and across the greater Western Cape. Based in {business.town}, our team is close by for inspections and follow-ups.
+        </p>
+      </article>
+
+      <aside class="space-y-6 lg:sticky lg:top-28 lg:self-start">
+        <QuoteCard />
+        <div class="bg-stone p-7 md:p-9">
+          <p class="caps text-ink/70">Why choose us</p>
+          <ul class="mt-4 space-y-3">
+            {s.benefits.map((b) => <li class="flex items-start gap-3 font-semibold"><Icon name="check" class="mt-1 size-5 shrink-0 text-red" /> {b}</li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {
+    s.gallery.length > 0 && (
+      <section class="bg-ink" aria-label={`${s.name} project photos`}>
+        <ul class="grid grid-cols-2 gap-[3px] md:grid-cols-3">
+          {s.gallery.map((n, i) => (
+            <li class="overflow-hidden" data-reveal style={`--d: ${(i % 3) * 0.06}s`}>
+              <Image src={photo(n)} alt={altFor(n)} widths={[480, 800, 1200]} sizes="(min-width:768px) 33vw, 50vw" class="aspect-[4/3] h-full w-full object-cover" />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    s.faqs.length > 0 && (
+      <section class="on-light bg-paper py-20 text-ink md:py-28">
+        <div class="mx-auto grid max-w-[1680px] gap-12 px-5 md:px-14 lg:grid-cols-[1fr_1.4fr]">
+          <SectionHead eyebrow="Questions" lines={[{t: `${s.name.split(' ')[0]}`}, {t: 'FAQ', i: true}]} />
+          <div>
+            <Faq items={s.faqs} />
+            <a href="/faq/" class="caps mt-8 inline-flex items-center gap-2 text-red">All FAQs & pricing <Icon name="arrow" class="size-4" /></a>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="bg-ink pt-24 md:pt-32">
+    <div class="mx-auto max-w-[1680px] px-5 pb-14 md:px-14">
+      <SectionHead eyebrow="More services" lines={[{t: 'Everything your'}, {t: 'roof needs', i: true}]} />
+    </div>
+    <ServiceCards exclude={s.slug} />
+  </section>
+</Base>

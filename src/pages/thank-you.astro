@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import {business} from '../data/site';
+---
+
+<Base title="Thank you | West Coast Roof Care" description="Your request has been sent." noindex>
+  <section class="flex min-h-svh items-center bg-ink">
+    <div class="mx-auto max-w-[1680px] px-5 py-32 md:px-14">
+      <p class="caps text-white/65">Request received</p>
+      <h1 class="display mt-4 text-[clamp(52px,8vw,140px)]"><span class="block">Thank you.</span><span class="it block">We’ll be in touch.</span></h1>
+      <p class="mt-8 max-w-[52ch] text-[18px] text-white/85">We usually reply within one working day. For anything urgent, call or WhatsApp {business.contact} on {business.phone}.</p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="/" class="btn btn-white">Back to home</a>
+        <a href={business.whatsapp} target="_blank" rel="noopener" class="btn btn-ghost"><Icon name="chat" class="size-4" /> WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</Base>

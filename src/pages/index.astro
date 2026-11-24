@@ -1,0 +1,86 @@
+---
+import {Image} from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Panels from '../components/Panels.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import Process from '../components/Process.astro';
+import WhyUs from '../components/WhyUs.astro';
+import Reviews from '../components/Reviews.astro';
+import ProjectStrip from '../components/ProjectStrip.astro';
+import Icon from '../components/Icon.astro';
+import {home, photo, towns, business} from '../data/site';
+---
+
+<Base title={home.title} description={home.description}>
+  <Hero
+    size="full"
+    lines={home.lines}
+    body={home.body}
+    image={photo('hero-roof-coating-beachfront')}
+    alt="Drone view of a freshly coated charcoal metal roof on a beachfront home on the West Coast"
+  />
+
+  <!-- Intro statement -->
+  <section class="bg-ink py-24 md:py-36" aria-labelledby="intro-h">
+    <div class="mx-auto grid max-w-[1680px] gap-12 px-5 md:px-14 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+      <div id="intro-h">
+        <SectionHead eyebrow={`Roofer & waterproofer · ${business.town}`} lines={[{t: 'Your roofing'}, {t: 'experts on the', i: false}, {t: 'West Coast.', i: true}]} />
+      </div>
+      <div data-reveal style="--d: 0.15s">
+        <p class="text-[19px] text-white/85">
+          West Coast Roof Care is a local roofing and waterproofing company based in Vredenburg. We grew through referrals by doing honest work: finding the real cause of a leak, recommending the right system and finishing on schedule.
+        </p>
+        <a href="/about/" class="caps mt-8 inline-flex items-center gap-2 border-b border-white/40 pb-1 hover:border-red-bright hover:text-red-bright">About our company <Icon name="arrow" class="size-4" /></a>
+      </div>
+    </div>
+  </section>
+
+  <Panels />
+
+  <!-- All services -->
+  <section class="bg-ink pt-24 md:pt-32" aria-labelledby="services-h">
+    <div class="mx-auto flex max-w-[1680px] flex-wrap items-end justify-between gap-8 px-5 pb-14 md:px-14">
+      <div id="services-h"><SectionHead eyebrow="What we do" lines={[{t: 'Complete property'}, {t: 'protection', i: true}]} /></div>
+      <a href="/services/" class="btn btn-white" data-reveal>All services <Icon name="arrow" class="size-4" /></a>
+    </div>
+    <ServiceCards />
+  </section>
+
+  <!-- Why us -->
+  <section class="bg-ink py-24 md:py-32" aria-labelledby="why-h">
+    <div class="mx-auto max-w-[1680px] px-5 md:px-14">
+      <div id="why-h"><SectionHead eyebrow="Why West Coast Roof Care" lines={[{t: 'Protection'}, {t: 'without compromise', i: true}]} /></div>
+      <div class="mt-16"><WhyUs /></div>
+    </div>
+  </section>
+
+  <Process />
+
+  <!-- Recent work -->
+  <section class="bg-ink pt-24 md:pt-32" aria-labelledby="work-h">
+    <div class="mx-auto flex max-w-[1680px] flex-wrap items-end justify-between gap-8 px-5 pb-14 md:px-14">
+      <div id="work-h"><SectionHead eyebrow="Recent projects" lines={[{t: 'Quality work.'}, {t: 'Watertight results.', i: true}]} /></div>
+      <a href="/projects/" class="btn btn-white" data-reveal>View all projects <Icon name="arrow" class="size-4" /></a>
+    </div>
+    <ProjectStrip />
+  </section>
+
+  <Reviews />
+
+  <!-- Service areas -->
+  <section class="relative overflow-hidden bg-ink py-24 md:py-32" aria-labelledby="areas-h">
+    <Image src={photo('aerial-coastal-homes')} alt="" widths={[960, 1600]} sizes="100vw" class="absolute inset-0 h-full w-full object-cover opacity-30" />
+    <div class="relative mx-auto max-w-[1680px] px-5 md:px-14">
+      <div id="areas-h"><SectionHead eyebrow="Areas we serve" lines={[{t: 'From Vredenburg'}, {t: 'across the West Coast', i: true}]} /></div>
+      <ul class="mt-12 flex flex-wrap gap-3" data-reveal>
+        {towns.map((t) => <li><a href={`/areas/${t.slug}/`} class="caps flex min-h-12 items-center gap-2 bg-white/10 px-5 py-3 backdrop-blur-md transition-colors hover:bg-white/25"><Icon name="pin" class="size-4 text-red-bright" /> {t.name}</a></li>)}
+        <li><a href="/areas/" class="caps flex min-h-12 items-center bg-red px-5 py-3 hover:bg-red-deep">+ the greater Western Cape</a></li>
+      </ul>
+      <p class="mt-8 max-w-[60ch] text-white/85" data-reveal>
+        Roof waterproofing, roof coating, roof replacement and asbestos encapsulation in Vredenburg, Saldanha, Langebaan, St Helena Bay, Malmesbury and surrounding West Coast towns.
+      </p>
+    </div>
+  </section>
+</Base>

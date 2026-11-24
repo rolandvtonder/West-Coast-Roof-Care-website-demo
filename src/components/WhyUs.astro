@@ -1,0 +1,16 @@
+---
+import Icon from './Icon.astro';
+import {whyUs} from '../data/site';
+---
+
+<ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+  {
+    whyUs.map((w, i) => (
+      <li data-reveal style={`--d: ${i * 0.08}s`}>
+        <Icon name={i === 1 ? 'file' : i === 2 ? 'pin' : i === 3 ? 'droplet' : 'shield'} class="size-8 text-red-bright" />
+        <h3 class="display mt-5 text-[28px]">{w.t}</h3>
+        <p class="mt-2 text-white/75">{w.d}</p>
+      </li>
+    ))
+  }
+</ul>

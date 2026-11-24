@@ -1,0 +1,66 @@
+---
+import {Image} from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import QuoteCard from '../components/QuoteCard.astro';
+import {photo, ggc, business} from '../data/site';
+import {breadcrumbs} from '../data/seo';
+const crumbs = [{name: 'GGC Steel Division', href: '/ggc-steel-division/'}];
+const schema = [
+  breadcrumbs(crumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Structural steel design, fabrication & erection',
+    serviceType: 'Structural steel',
+    provider: {'@id': `${business.url}/#business`},
+    areaServed: ['Vredenburg', 'Saldanha', 'Langebaan', 'Malmesbury', 'Western Cape'].map((n) => ({'@type': 'Place', name: n})),
+  },
+];
+---
+
+<Base
+  title="GGC Steel Division | Structural Steel Design, Fabrication & Erection | West Coast"
+  description="GGC Design & Engineering, the steel division of West Coast Roof Care: structural steel design, fabrication, erection and roof structures in Vredenburg, Saldanha, Langebaan, Malmesbury and the Western Cape."
+  schema={schema}
+>
+  <Hero
+    eyebrow="West Coast Roof Care · Engineering division"
+    lines={[{t: 'GGC Design &'}, {t: 'Engineering', i: true}]}
+    body="Structural steel design, fabrication and erection for industrial, commercial and residential projects."
+    image={photo('roof-replacement-trusses')}
+    alt="Roof structure being erected on a building"
+    crumbs={crumbs}
+  />
+
+  <section class="on-light bg-paper py-24 text-ink md:py-32">
+    <div class="mx-auto grid max-w-[1680px] gap-14 px-5 md:px-14 lg:grid-cols-[1fr_400px]">
+      <div>
+        <SectionHead eyebrow="Capabilities" lines={[{t: 'Steelwork from'}, {t: 'drawing to site', i: true}]} />
+        <ol class="mt-14 grid gap-px bg-ink/15 sm:grid-cols-2">
+          {
+            ggc.services.map((s, i) => (
+              <li class="bg-paper p-7" data-reveal style={`--d: ${(i % 2) * 0.08}s`}>
+                <span class="display text-[48px] text-red">0{i + 1}</span>
+                <h3 class="display mt-3 text-[28px]">{s.t}</h3>
+                <p class="mt-2 text-ink/75">{s.d}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <h2 class="display mt-16 text-[clamp(32px,3vw,48px)]" data-reveal>Sectors we <span class="it">build for</span></h2>
+        <ul class="mt-6 flex flex-wrap gap-3" data-reveal>
+          {ggc.sectors.map((s) => <li class="caps bg-ink px-5 py-3 text-white">{s}</li>)}
+        </ul>
+        <p class="mt-8 max-w-[65ch] text-[18px] text-ink/85" data-reveal>
+          Including portal frames, mezzanines, staircases, canopies and on-site crane rigging. Serving Vredenburg, Saldanha, Langebaan, Malmesbury and the Western Cape.
+        </p>
+      </div>
+      <aside class="lg:sticky lg:top-28 lg:self-start"><QuoteCard title={`Direct call: ${business.contact}`} /></aside>
+    </div>
+  </section>
+  <section class="bg-ink">
+    <Image src={photo('aerial-coastal-homes')} alt="Aerial view of a coastal building project" widths={[960, 1600, 2048]} sizes="100vw" class="h-[60svh] w-full object-cover" />
+  </section>
+</Base>

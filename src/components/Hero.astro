@@ -1,0 +1,76 @@
+---
+import {Image} from 'astro:assets';
+import type {ImageMetadata} from 'astro';
+import Icon from './Icon.astro';
+import type {Line} from '../data/site';
+import {business} from '../data/site';
+
+interface Props {
+  lines: Line[];
+  body?: string;
+  image: ImageMetadata;
+  alt: string;
+  /** full = home-page takeover; page = shorter hero for inner pages. */
+  size?: 'full' | 'page';
+  eyebrow?: string;
+  crumbs?: {name: string; href: string}[];
+  ctas?: boolean;
+}
+const {lines, body, image, alt, size = 'page', eyebrow, crumbs, ctas = true} = Astro.props;
+const full = size === 'full';
+---
+
+<!-- A slow drone-like drift over the photo stands in for the reference film;
+     as you scroll on, the stage blurs, dims and pulls back (src/scripts/site.ts). -->
+<section data-hero class={`relative overflow-hidden bg-ink ${full ? 'h-svh min-h-[640px]' : 'h-[78svh] min-h-[560px]'}`}>
+  <div data-hero-stage class="absolute inset-0 origin-center will-change-transform">
+    <div class="absolute inset-0 overflow-hidden">
+      <Image
+        src={image}
+        alt={alt}
+        widths={[640, 960, 1280, 1600, 2048]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        class="drift h-full w-full object-cover"
+      />
+    </div>
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgb(14_14_15/0.78),rgb(14_14_15/0.35)_55%,rgb(14_14_15/0.1))]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(0deg,rgb(14_14_15/0.65),transparent_40%)]"></div>
+
+    <div class={`absolute inset-0 mx-auto flex max-w-[1680px] flex-col px-5 md:px-14 ${full ? 'pt-[clamp(110px,15vh,170px)]' : 'justify-end pb-[clamp(64px,10vh,110px)]'}`}>
+      {
+        crumbs && (
+          <nav aria-label="Breadcrumb" class="caps mb-6 text-white/70">
+            <ol class="flex flex-wrap items-center gap-2">
+              <li><a href="/" class="hover:text-white">Home</a></li>
+              {crumbs.map((c, i) => (
+                <li class="flex items-center gap-2">
+                  <span aria-hidden="true">/</span>
+                  {i === crumbs.length - 1 ? <span aria-current="page" class="text-white">{c.name}</span> : <a href={c.href} class="hover:text-white">{c.name}</a>}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
+      {eyebrow && <p class="caps mb-5 text-white/80">{eyebrow}</p>}
+      <h1 class={`display text-white drop-shadow-[0_4px_30px_rgb(0_0_0/0.35)] ${full ? 'text-[clamp(56px,8.4vw,156px)]' : 'text-[clamp(46px,6.6vw,118px)]'}`}>
+        {lines.map((l, i) => <span class={`block ${l.i ? 'it' : ''} ${full && i === 0 ? 'pl-[1.6em]' : ''}`}>{l.t}</span>)}
+      </h1>
+      {body && <p class={`mt-8 max-w-[440px] text-[17px] text-white/90 ${full ? 'ml-[clamp(0px,19vw,330px)] max-md:ml-0' : ''}`}>{body}</p>}
+      {
+        ctas && (
+          <div class={`mt-8 flex flex-wrap gap-3 ${full ? 'ml-[clamp(0px,19vw,330px)] max-md:ml-0' : ''}`}>
+            <a href="/contact/" class="btn btn-red">
+              Free site inspection <Icon name="arrow" class="size-4" />
+            </a>
+            <a href={`tel:${business.phoneIntl}`} class="btn btn-ghost max-sm:hidden">
+              <Icon name="phone" class="size-4" /> {business.phone}
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

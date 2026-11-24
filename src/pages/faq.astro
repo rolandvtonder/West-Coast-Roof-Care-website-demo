@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Faq from '../components/Faq.astro';
+import QuoteCard from '../components/QuoteCard.astro';
+import {photo, faqs, pricing} from '../data/site';
+import {breadcrumbs, faqSchema} from '../data/seo';
+const crumbs = [{name: 'FAQ & Pricing', href: '/faq/'}];
+---
+
+<Base
+  title="Roofing & Waterproofing FAQ and Prices | West Coast Roof Care"
+  description="How much does roof waterproofing cost? How often should a coastal roof be coated? Answers and an indicative price guide from West Coast Roof Care."
+  schema={[breadcrumbs(crumbs), faqSchema(faqs)]}
+>
+  <Hero
+    lines={[{t: 'Got questions?'}, {t: 'We’ve got answers.', i: true}]}
+    image={photo('flat-roof-waterproofing-crew')}
+    alt="Team waterproofing a flat roof near the lagoon"
+    crumbs={crumbs}
+  />
+
+  <section class="on-light bg-paper py-20 text-ink md:py-28" aria-labelledby="pricing-h">
+    <div class="mx-auto grid max-w-[1680px] gap-12 px-5 md:px-14 lg:grid-cols-2">
+      <div id="pricing-h"><SectionHead eyebrow="Indicative pricing" lines={[{t: 'Waterproofing'}, {t: 'price guide', i: true}]} /></div>
+      <div data-reveal>
+        <table class="w-full text-left">
+          <caption class="sr-only">Indicative waterproofing prices per square metre</caption>
+          <thead><tr class="caps border-b border-ink/25"><th class="py-3 font-semibold">System</th><th class="py-3 text-right font-semibold">Guide price</th></tr></thead>
+          <tbody>
+            {pricing.map((p) => <tr class="border-b border-ink/15"><td class="py-4 text-[18px]">{p.system}</td><td class="py-4 text-right font-semibold whitespace-nowrap tabular-nums">{p.range}</td></tr>)}
+          </tbody>
+        </table>
+        <p class="mt-5 text-ink/70">These prices are a guide only. Every roof is different, so we confirm your price after a free site inspection.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-light bg-stone py-20 text-ink md:py-28" aria-labelledby="faq-h">
+    <div class="mx-auto grid max-w-[1680px] gap-12 px-5 md:px-14 lg:grid-cols-[1.5fr_400px]">
+      <div>
+        <h2 id="faq-h" class="display mb-10 text-[clamp(40px,4.6vw,80px)]">Frequently asked <span class="it">questions</span></h2>
+        <Faq items={faqs} />
+      </div>
+      <aside class="lg:sticky lg:top-28 lg:self-start"><QuoteCard title="Still unsure? Ask us." /></aside>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import Process from '../../components/Process.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import {photo, pricing} from '../../data/site';
+import {breadcrumbs} from '../../data/seo';
+const crumbs = [{name: 'Services', href: '/services/'}];
+---
+
+<Base
+  title="Roofing & Waterproofing Services | West Coast Roof Care"
+  description="Waterproofing, specialised roof coating, roof replacement, high pressure cleaning, painting and registered asbestos encapsulation across the West Coast and Western Cape."
+  schema={[breadcrumbs(crumbs)]}
+>
+  <Hero
+    lines={[{t: 'Affordable.'}, {t: 'Long-lasting.', i: true}, {t: 'Solutions.'}]}
+    body="Six specialist services that keep homes, businesses and industrial buildings dry, sealed and protected from the coastal weather."
+    image={photo('roof-coating-team-on-ladder')}
+    alt="West Coast Roof Care team coating a metal roof"
+    crumbs={crumbs}
+  />
+  <section class="bg-ink pt-24 md:pt-32">
+    <div class="mx-auto max-w-[1680px] px-5 pb-14 md:px-14">
+      <SectionHead eyebrow="Our services" lines={[{t: 'Complete property'}, {t: 'protection', i: true}]} />
+    </div>
+    <ServiceCards />
+  </section>
+  <section class="on-light bg-paper py-24 text-ink md:py-32">
+    <div class="mx-auto grid max-w-[1680px] gap-12 px-5 md:px-14 lg:grid-cols-2">
+      <SectionHead eyebrow="Indicative pricing" lines={[{t: 'Waterproofing'}, {t: 'price guide', i: true}]} />
+      <div data-reveal>
+        <table class="w-full text-left">
+          <caption class="sr-only">Indicative waterproofing prices per square metre</caption>
+          <thead><tr class="caps border-b border-ink/25"><th class="py-3 font-semibold">System</th><th class="py-3 text-right font-semibold">Guide price</th></tr></thead>
+          <tbody>
+            {pricing.map((p) => <tr class="border-b border-ink/15"><td class="py-4 text-[18px]">{p.system}</td><td class="py-4 text-right font-semibold whitespace-nowrap tabular-nums">{p.range}</td></tr>)}
+          </tbody>
+        </table>
+        <p class="mt-5 text-ink/70">A guide only. Your price depends on the roof's condition and preparation, which we confirm at a free site inspection. <a href="/faq/" class="text-red underline">More in our FAQ</a>.</p>
+      </div>
+    </div>
+  </section>
+  <Process />
+</Base>

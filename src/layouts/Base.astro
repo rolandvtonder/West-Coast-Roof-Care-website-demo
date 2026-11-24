@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Menu from '../components/Menu.astro';
+import Footer from '../components/Footer.astro';
+import {business, areas, services} from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Absolute or root-relative social share image. */
+  image?: string;
+  noindex?: boolean;
+  /** Extra JSON-LD objects for this page (Service, FAQPage, BreadcrumbList…). */
+  schema?: Record<string, unknown>[];
+  /** Preload the hero image so it paints first (LCP). */
+  preload?: string;
+}
+
+const {title, description, image = '/og-image.jpg', noindex = false, schema = [], preload} = Astro.props;
+const site = Astro.site!;
+const canonical = new URL(Astro.url.pathname, site).href;
+// Resolve against BASE_URL so the share image also works on the sub-folder demo.
+const ogImage = new URL(image.replace(/^\//, ''), new URL(import.meta.env.BASE_URL, site)).href;
+
+// One business entity, referenced by @id from every other schema on the site.
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'RoofingContractor',
+  '@id': `${business.url}/#business`,
+  name: business.name,
+  legalName: business.legalName,
+  alternateName: business.short,
+  url: `${business.url}/`,
+  logo: `${business.url}/icon-512.png`,
+  image: `${business.url}/og-image.jpg`,
+  telephone: business.phoneIntl,
+  email: business.email,
+  priceRange: 'R150 – R1,100 per m²',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: business.town,
+    addressRegion: business.region,
+    postalCode: business.postcode,
+    addressCountry: business.country,
+  },
+  geo: {'@type': 'GeoCoordinates', latitude: business.geo.lat, longitude: business.geo.lng},
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '17:00',
+    },
+  ],
+  areaServed: [...areas.map((a) => ({'@type': 'City', name: a})), {'@type': 'State', name: 'Western Cape'}],
+  sameAs: business.socials.map((s) => s.href),
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Roofing & waterproofing services',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {'@type': 'Service', name: s.name, url: `${business.url}/services/${s.slug}/`},
+    })),
+  },
+};
+const allSchema = [businessSchema, ...schema];
+---
+
+<!doctype html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex || import.meta.env.PUBLIC_DEMO === '1' ? <meta name="robots" content="noindex, follow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
+    <meta name="theme-color" content="#0e0e0f" />
+    <meta name="geo.region" content="ZA-WC" />
+    <meta name="geo.placename" content={business.town} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_ZA" />
+    <meta property="og:site_name" content={business.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700&family=Barlow:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    {preload && <link rel="preload" as="image" href={preload} fetchpriority="high" />}
+
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <a href="#main" class="caps fixed top-3 left-3 z-[70] -translate-y-24 bg-white px-4 py-3 text-ink focus:translate-y-0">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <Menu />
+    <div class="grain" aria-hidden="true"></div>
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>

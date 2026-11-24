@@ -1,0 +1,54 @@
+---
+import {Image} from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Icon from '../../components/Icon.astro';
+import {towns, photo} from '../../data/site';
+import {breadcrumbs} from '../../data/seo';
+const crumbs = [{name: 'Areas', href: '/areas/'}];
+---
+
+<Base
+  title="Areas We Serve | Roofing & Waterproofing on the West Coast | West Coast Roof Care"
+  description="West Coast Roof Care serves Vredenburg, Saldanha, Langebaan, St Helena Bay, Malmesbury and the greater Western Cape with roofing, waterproofing and roof coating."
+  schema={[breadcrumbs(crumbs)]}
+>
+  <Hero
+    lines={[{t: 'From Vredenburg'}, {t: 'across the West Coast', i: true}]}
+    body="Based in Vredenburg, we inspect, waterproof, coat and replace roofs in towns across the West Coast and the greater Western Cape."
+    image={photo('aerial-coastal-homes')}
+    alt="Aerial view of coastal homes on the West Coast"
+    crumbs={crumbs}
+  />
+
+  <section class="bg-ink py-20 md:py-28">
+    <div class="mx-auto max-w-[1680px] px-5 md:px-14">
+      <SectionHead eyebrow="Areas we serve" lines={[{t: 'Choose your'}, {t: 'town', i: true}]} />
+    </div>
+    <ul class="mt-14 grid gap-[3px] sm:grid-cols-2 lg:grid-cols-3">
+      {
+        towns.map((t, i) => (
+          <li data-reveal style={`--d: ${(i % 3) * 0.06}s`}>
+            <a href={`/areas/${t.slug}/`} class="group relative flex aspect-[4/3] flex-col justify-end overflow-hidden bg-coal p-7 md:p-9">
+              <Image src={photo(t.hero)} alt="" widths={[480, 800]} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" class="absolute inset-0 h-full w-full object-cover opacity-70 transition-transform duration-[1.2s] ease-silk group-hover:scale-105" />
+              <div class="absolute inset-0 bg-[linear-gradient(0deg,rgb(14_14_15/0.9),transparent_65%)]" />
+              <div class="relative">
+                <p class="caps text-white/75">Roofing & waterproofing</p>
+                <h2 class="display mt-2 text-[clamp(36px,3.4vw,56px)]"><span class="it">{t.name}</span></h2>
+                <span class="caps mt-4 inline-flex items-center gap-2">View {t.name} <Icon name="arrow" class="size-4 transition-transform group-hover:translate-x-1" /></span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+      <li data-reveal>
+        <a href="/contact/" class="flex aspect-[4/3] flex-col justify-end bg-red p-7 md:p-9">
+          <p class="caps text-white/85">Elsewhere in the Western Cape?</p>
+          <h2 class="display mt-2 text-[clamp(36px,3.4vw,56px)]">Ask us</h2>
+          <span class="caps mt-4 inline-flex items-center gap-2">Get in touch <Icon name="arrow" class="size-4" /></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</Base>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /send.php
+Disallow: /thank-you/
+
+Sitemap: https://wcroofcare.co.za/sitemap-index.xml
